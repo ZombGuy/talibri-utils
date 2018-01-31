@@ -11,6 +11,8 @@
 // ==/UserScript==
 
 // BEGIN EDITING
+var highlightColor  = '#0c0'; // hex color code or recognized color code
+
 var highlightColor  = '#99ccff'; // hex color code or recognized color code
 var darkMode = true;   // true or false
 var displayChatHeading = false; // true or false
@@ -48,6 +50,11 @@ var displayChatHeading = false; // true or false
     //footer styles
     addGlobalStyle('.percentage-circle-fill {fill: '+highlightColor+'}');
 
+    //login styles
+    addGlobalStyle('.jumbotron { background-color:rgba(0,0,0,0.75) !important; }');
+    addGlobalStyle('.jumbotron .btn-success { background-color:'+highlightColor+' !important; border-color:black }');
+
+    addGlobalStyle('.main-page .jumbotron { display:none !important; }');
     //dashboard styles
     addGlobalStyle('.jumbotron { display:none !important; }');
     addGlobalStyle('p.text-center {color: #1ceac1;}');
