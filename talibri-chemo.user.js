@@ -4,6 +4,7 @@
 // @version      1.0.0
 // @description  Remove some of the Cancer
 // @author       Dan Campbell
+// @author       Dapper Zom
 // @match        https://www.talibri.com/*
 // @match        https://talibri.com/*
 // @grant        none
@@ -43,12 +44,15 @@ var displayChatHeading = false; // true or false
     addGlobalStyle('.main-chat-panel .panel-footer { height:80px !important; }');
     $('#main-chat-text-area').attr('placeholder','Enter text');
     addGlobalStyle('.main-chat-panel .form-group { margin-bottom:0 !important; }');
-
+    addGlobalStyle('p.card-text {color: #f9b254;}');
     //footer styles
     addGlobalStyle('.percentage-circle-fill {fill: '+highlightColor+'}');
 
     //dashboard styles
     addGlobalStyle('.jumbotron { display:none !important; }');
+    addGlobalStyle('p.text-center {color: #1ceac1;}');
+    addGlobalStyle('h3.panel-title{color: #901cea; font-weight: bold;}');
+    addGlobalStyle('.col-xs-6 {color: #adff56;}');
 
     //inventory styles
     addGlobalStyle('.inventory-panel { max-height:none !important; overflow-y:visible !important; }');
