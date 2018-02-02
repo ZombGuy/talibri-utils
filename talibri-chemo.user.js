@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Talibri Chemo
 // @namespace    http://tampermonkey.net/
-// @version      1.0.0
+// @version      1.0.2
 // @description  Remove some of the Cancer
 // @author       Dan Campbell
 // @author       Dapper Zom
@@ -47,6 +47,9 @@ var displayChatHeading = false; // true or false
     $('#main-chat-text-area').attr('placeholder','Enter text');
     addGlobalStyle('.main-chat-panel .form-group { margin-bottom:0 !important; }');
     addGlobalStyle('p.card-text {color: #f9b254;}');
+    addGlobalStyle('.admin { color: #FF0000 !important;}');
+    addGlobalStyle('.card-text { border-bottom-style: solid; border-color: black;}');
+
     //footer styles
     addGlobalStyle('.percentage-circle-fill {fill: '+highlightColor+'}');
 
@@ -69,6 +72,10 @@ var displayChatHeading = false; // true or false
     addGlobalStyle('#profile-main-div .col-xs-8 { max-height:none !important; overflow-y:visible !important; }');
     addGlobalStyle('.progress-bar {background-color:'+highlightColor+'}');
 
+    //market stuffs
+    addGlobalStyle('.modal-footer {background-color: #333;}');
+    addGlobalStyle('.modal-body {background-color: #333;}');
+    addGlobalStyle('.modal-header {background-color: #111;}');
     if(darkMode) enterDarkMode();
     if(displayChatHeading == false) {
         addGlobalStyle('.main-chat-panel>.panel-heading {display:none}');
