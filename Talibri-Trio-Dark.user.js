@@ -1,13 +1,13 @@
 // ==UserScript==
-// @name         Talibri Chemo
+// @name         Talibri Trio Dark
 // @namespace    http://tampermonkey.net/
 // @version      1.0.2
-// @description  Remove some of the Cancer
-// @author       Dan Campbell
+// @description  Fixed a few things
 // @author       Dapper Zom
 // @match        https://www.talibri.com/*
 // @match        https://talibri.com/*
 // @grant        none
+//Code originally from Stretch or Dan Campbell he let me use his style code to create this.
 // ==/UserScript==
 
 // BEGIN EDITING
@@ -48,7 +48,7 @@ var displayChatHeading = false; // true or false
     addGlobalStyle('.main-chat-panel .form-group { margin-bottom:0 !important; }');
     addGlobalStyle('p.card-text {color: #f9b254;}');
     addGlobalStyle('.admin { color: #FF0000 !important;}');
-    addGlobalStyle('.card-text { border-bottom-style: solid; border-color: black;}');
+    addGlobalStyle('.card-text { border-bottom-style: solid; border-color: #49515e;}');
 
     //footer styles
     addGlobalStyle('.percentage-circle-fill {fill: '+highlightColor+'}');
