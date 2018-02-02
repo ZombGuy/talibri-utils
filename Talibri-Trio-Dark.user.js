@@ -1,8 +1,8 @@
 // ==UserScript==
 // @name         Talibri Trio Dark
 // @namespace    http://tampermonkey.net/
-// @version      1.0.2
-// @description  Fixed a few things
+// @version      1.0.3
+// @description  QoL improvements for combat menus and more
 // @author       Dapper Zom
 // @match        https://www.talibri.com/*
 // @match        https://talibri.com/*
@@ -28,6 +28,8 @@ var displayChatHeading = false; // true or false
     'use strict';
 
     //global styles
+    //fix useless scrollbars appearing
+    addGlobalStyle('.dropdown-menu {overflow: hidden;}');
     //reset body height to 100% of window
     addGlobalStyle('html, body { height: 100%; }');
     //set static height
@@ -35,8 +37,12 @@ var displayChatHeading = false; // true or false
     addGlobalStyle('.navbar-fixed-bottom { height:65px !important }');
     addGlobalStyle('.panel-footer { height:143px !important; }');
     addGlobalStyle('.row:first-of-type { margin-left:0 !important; margin-right:0 !important; }');
-    addGlobalStyle('body>.container-fluid:first-of-type { margin-top:0 !important; padding-top:50px !important; padding-left:0 !important; padding-bottom:0 !important; background-size:cover; background-position: center center; background-attachment: fixed; }');
+    addGlobalStyle('body>.container-fluid:first-of-type { margin-top:0 !important; padding-top:50px !important; padding-left:0 !important; padding-bottom:450px !important; background-size:cover; background-position: center center; background-attachment: fixed; }');
 
+    //activeskills stuff
+    addGlobalStyle('.bg-success { background-color: #333;}');
+    addGlobalStyle('#active_skill_dropdown {padding-bottom: 36px;}');
+    addGlobalStyle('.panel.panel-default {margin-bottom: 0 !important;}');
     //modify chat panel
     addGlobalStyle('body>.container-fluid:first-of-type>div.row>div.col-xs-3 { padding-left:0 !important; height:calc(100vh - 228px) !important; position: fixed !important; width:20%; }');
     addGlobalStyle('.main-chat-panel.panel-heading { height:37px !important; }');
@@ -61,12 +67,13 @@ var displayChatHeading = false; // true or false
     //dashboard styles
     addGlobalStyle('.jumbotron { display:none !important; }');
     addGlobalStyle('p.text-center {color: #1ceac1;}');
-    addGlobalStyle('h3.panel-title{color: #901cea; font-weight: bold;}');
+    addGlobalStyle('h3.panel-title{color: #ccc; font-weight: bold;}');
     addGlobalStyle('.col-xs-6 {color: #adff56;}');
 
     //inventory styles
     addGlobalStyle('.inventory-panel { max-height:none !important; overflow-y:visible !important; }');
     addGlobalStyle('.inventory-panel>.panel-body { max-height:none !important; overflow-y:visible !important;  }');
+    addGlobalStyle('#inventory-component-table.panel-body {overflow-y: auto !important;}');
 
     //profile styles
     addGlobalStyle('#profile-main-div .col-xs-8 { max-height:none !important; overflow-y:visible !important; }');
@@ -97,7 +104,7 @@ function enterDarkMode(){
     addGlobalStyle('.navbar-default .navbar-nav>li>a { color:#999 !important }');
     addGlobalStyle('.navbar-default .navbar-nav>li>a:hover { color:#ccc !important }');
     addGlobalStyle('.navbar-default .navbar-nav>li>a:focus { color:#ccc !important }');
-    addGlobalStyle('.navbar-default .navbar-nav>.open>a, .navbar-default .navbar-nav>.open>a:focus, .navbar-default .navbar-nav>.open>a:hover { background-color:#111 !important }');
+    addGlobalStyle('.navbar-default .navbar-nav>.open>a, .navbar-default .navbar-nav>.open>a:focus, .navbar-default .navbar-nav>.open>a:hover { background-color: #1a1a1a !important;');
     addGlobalStyle('.percentage-circle-contents { color:#ccc !important }');
     addGlobalStyle('.percentage-circle-contents>img { filter: invert(100%); }');
     addGlobalStyle('.percentage-circle-fg {fill: black;}');
@@ -113,7 +120,7 @@ function enterDarkMode(){
     addGlobalStyle('.actions button.btn-sm {background-color: '+highlightColor+'; border-color:black; color: white;}');
     addGlobalStyle('.actions button.btn-sm.btn-danger {background-color: #d9534f; border-color:black; color: white; }');
     addGlobalStyle('.table>tbody>tr.success>td, .table>tbody>tr.success>th, .table>tbody>tr>td.success, .table>tbody>tr>th.success, .table>tfoot>tr.success>td, .table>tfoot>tr.success>th, .table>tfoot>tr>td.success, .table>tfoot>tr>th.success, .table>thead>tr.success>td, .table>thead>tr.success>th, .table>thead>tr>td.success, .table>thead>tr>th.success{background-color: rgba(255,255,255,0.25) !important;}');
-    addGlobalStyle('.panel-footer {background-color:rgba(0,0,0,0.2)}');
+    addGlobalStyle('.panel-footer {background-color:rgba(0,0,0,0.2); height: 100px !important;}');
     addGlobalStyle('select {background-color:#333}');
     addGlobalStyle('.table-striped>tbody>tr:nth-of-type(odd) { background: none !important}');
     addGlobalStyle('.table-hover>tbody>tr:hover { background-color: rgba(0,0,0,0.4) !important}');
