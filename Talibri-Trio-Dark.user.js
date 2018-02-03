@@ -1,8 +1,8 @@
 // ==UserScript==
 // @name         Talibri Trio Dark
 // @namespace    http://tampermonkey.net/
-// @version      1.0.4
-// @description  modified soemthings for Cook Ever Fish
+// @version      1.1.0
+// @description  bigger area for equipment in Profile
 // @author       Dapper Zom
 // @match        https://www.talibri.com/*
 // @match        https://talibri.com/*
@@ -85,6 +85,7 @@ var displayChatHeading = false; // true or false
     //profile styles
     addGlobalStyle('#profile-main-div .col-xs-8 { max-height:none !important; overflow-y:visible !important; }');
     addGlobalStyle('.progress-bar {background-color:'+highlightColor+'}');
+    addGlobalStyle('#profile-main-div .col-xs-8 div.panel-body{ max-height: 405px !important;}');
 
     //market stuffs
     addGlobalStyle('.modal-footer {background-color: #333;}');
