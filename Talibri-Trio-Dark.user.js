@@ -1,8 +1,8 @@
 // ==UserScript==
 // @name         Talibri Trio Dark
 // @namespace    http://tampermonkey.net/
-// @version      1.0.3
-// @description  QoL improvements for combat menus and more
+// @version      1.0.4
+// @description  modified soemthings for Cook Ever Fish
 // @author       Dapper Zom
 // @match        https://www.talibri.com/*
 // @match        https://talibri.com/*
@@ -25,11 +25,14 @@ var displayChatHeading = false; // true or false
 //var displayChatHeading = true; // true or false
 
 (function() {
+
     'use strict';
 
+    //controls friends list
+    setTimeout(friendList, 1000);
     //global styles
     //fix useless scrollbars appearing
-    addGlobalStyle('.dropdown-menu {overflow: hidden;}');
+    addGlobalStyle('.dropdown-menu {overflow: auto;}');
     //reset body height to 100% of window
     addGlobalStyle('html, body { height: 100%; }');
     //set static height
@@ -43,6 +46,10 @@ var displayChatHeading = false; // true or false
     addGlobalStyle('.bg-success { background-color: #333;}');
     addGlobalStyle('#active_skill_dropdown {padding-bottom: 36px;}');
     addGlobalStyle('.panel.panel-default {margin-bottom: 0 !important;}');
+    addGlobalStyle('.col-sm-8 { color: #999 !important}');
+    addGlobalStyle('.btn-success { background-color: #5bc0de; border-color: #46b8da;}');
+    addGlobalStyle('#notifications { overflow-y: auto !important;}');
+
     //modify chat panel
     addGlobalStyle('body>.container-fluid:first-of-type>div.row>div.col-xs-3 { padding-left:0 !important; height:calc(100vh - 228px) !important; position: fixed !important; width:20%; }');
     addGlobalStyle('.main-chat-panel.panel-heading { height:37px !important; }');
@@ -62,8 +69,8 @@ var displayChatHeading = false; // true or false
     //login styles
     addGlobalStyle('.jumbotron { background-color:rgba(0,0,0,0.75) !important; }');
     addGlobalStyle('.jumbotron .btn-success { background-color:'+highlightColor+' !important; border-color:black }');
-
     addGlobalStyle('.main-page .jumbotron { display:none !important; }');
+
     //dashboard styles
     addGlobalStyle('.jumbotron { display:none !important; }');
     addGlobalStyle('p.text-center {color: #1ceac1;}');
@@ -83,6 +90,8 @@ var displayChatHeading = false; // true or false
     addGlobalStyle('.modal-footer {background-color: #333;}');
     addGlobalStyle('.modal-body {background-color: #333;}');
     addGlobalStyle('.modal-header {background-color: #111;}');
+    addGlobalStyle('.fren {color: #ff1c95;}');
+
     if(darkMode) enterDarkMode();
     if(displayChatHeading == false) {
         addGlobalStyle('.main-chat-panel>.panel-heading {display:none}');
@@ -128,3 +137,37 @@ function enterDarkMode(){
     addGlobalStyle('.popover-title { background-color: #333 !important}');
     addGlobalStyle('#main-chat-text-area {background-color: #333 !important;color: #ccc !important}');
 }
+    //Beta FriendsList
+while(document.getElementsByClassName('buyer-seller') <= 1){
+ friendList();
+}
+    var marketNames = document.getElementsByClassName('buyer-seller');
+console.log(marketNames);
+
+var friends = ['deverin', 'stretch','Bloopy','Pirion']; //Put someones name here using this format , 'persons ign' always put a colon first ebfore adding someone
+console.log(friends[4]);
+var r = 0;
+var i = 0;
+var u = 0;
+function friendList(){
+for(var r = 0; r < 100; r++){
+    for (var i = 0; i < marketNames.length; i++){
+       for(var u = 0; u < friends.length; u++){
+         if(indexOf(friends[u], 0) != -1){
+            marketNames[i].classList.add("fren");
+            }else{}
+
+       }
+        if(u >= friends.length){
+            u = 0;
+           }
+        if(i >= marketNames.length){
+           i = 0;
+           }
+    }
+}
+        if(r >= 100){
+        r = 0;
+    }
+}
+
