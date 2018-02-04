@@ -29,7 +29,7 @@ var displayChatHeading = false; // true or false
     'use strict';
 
     //controls friends list
-    setTimeout(friendList, 1000);
+    //setTimeout(friendList, 1000);
     //global styles
     //fix useless scrollbars appearing
     addGlobalStyle('.dropdown-menu {overflow: auto;}');
