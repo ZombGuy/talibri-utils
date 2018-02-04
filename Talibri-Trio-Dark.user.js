@@ -1,8 +1,8 @@
 // ==UserScript==
 // @name         Talibri Trio Dark
 // @namespace    http://tampermonkey.net/
-// @version      1.1.0
-// @description  bigger area for equipment in Profile
+// @version      1.1.1
+// @description  Stopped a spam in console
 // @author       Dapper Zom
 // @match        https://www.talibri.com/*
 // @match        https://talibri.com/*
@@ -139,36 +139,35 @@ function enterDarkMode(){
     addGlobalStyle('#main-chat-text-area {background-color: #333 !important;color: #ccc !important}');
 }
     //Beta FriendsList
-while(document.getElementsByClassName('buyer-seller') <= 1){
- friendList();
-}
-    var marketNames = document.getElementsByClassName('buyer-seller');
-console.log(marketNames);
+//while(document.getElementsByClassName('buyer-seller') <= 1){
+// friendList();
+//}
+//    var marketNames = document.getElementsByClassName('buyer-seller');
+//console.log(marketNames);
 
-var friends = ['deverin', 'stretch','Bloopy','Pirion']; //Put someones name here using this format , 'persons ign' always put a colon first ebfore adding someone
-console.log(friends[4]);
-var r = 0;
-var i = 0;
-var u = 0;
-function friendList(){
-for(var r = 0; r < 100; r++){
-    for (var i = 0; i < marketNames.length; i++){
-       for(var u = 0; u < friends.length; u++){
-         if(indexOf(friends[u], 0) != -1){
-            marketNames[i].classList.add("fren");
-            }else{}
-
-       }
-        if(u >= friends.length){
-            u = 0;
-           }
-        if(i >= marketNames.length){
-           i = 0;
-           }
-    }
-}
-        if(r >= 100){
-        r = 0;
-    }
-}
+//var friends = ['deverin', 'stretch','Bloopy','Pirion']; //Put someones name here using this format , 'persons ign' always put a colon first ebfore adding someone
+//console.log(friends[4]);
+//var r = 0;
+//var i = 0;
+//var u = 0;
+//function friendList(){
+//for(var r = 0; r < 100; r++){
+   // for (var i = 0; i < marketNames.length; i++){
+     //  for(var u = 0; u < friends.length; u++){
+      //   if(indexOf(friends[u], 0) != -1){
+      //      marketNames[i].classList.add("fren");
+       //     }else{}
+     //  }
+      //  if(u >= friends.length){
+       //     u = 0;
+       //    }
+      //  if(i >= marketNames.length){
+      //     i = 0;
+       //    }
+  //  }
+//}
+ //       if(r >= 100){
+ //       r = 0;
+ //   }
+//}
 
