@@ -57,7 +57,7 @@ var displayChatHeading = false; // true or false
     addGlobalStyle('.main-page { margin-left:20% !important; width:80% !important; margin-right:0 !important; padding-right:0 !important; }');
     addGlobalStyle('.main-chat-panel .form-group>br,.main-chat-panel .form-group>.text-muted {display:none; }');
     addGlobalStyle('.main-chat-panel .panel-footer { height:80px !important; }');
-    $('#main-chat-text-area').attr('placeholder','Enter text');
+   
     addGlobalStyle('.main-chat-panel .form-group { margin-bottom:0 !important; }');
     addGlobalStyle('p.card-text {color: #f9b254;}');
     addGlobalStyle('.admin { color: #FF0000 !important;}');
