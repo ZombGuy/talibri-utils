@@ -1,8 +1,8 @@
 // ==UserScript==
 // @name         Talibri Trio Dark
 // @namespace    http://tampermonkey.net/
-// @version      1.1.1
-// @description  Stopped a spam in console
+// @version      1.1.5
+// @description  Revamp to make it easier on the eyes
 // @author       Dapper Zom
 // @match        https://www.talibri.com/*
 // @match        https://talibri.com/*
@@ -139,6 +139,9 @@ function enterDarkMode(){
     addGlobalStyle('.popover-title { background-color: #333 !important}');
     addGlobalStyle('#main-chat-text-area {background-color: #333 !important;color: #ccc !important}');
     addGlobalStyle('.container-fluid:first-of-type {background-color: #1a1a1a;background-image: none !important}');
+    addGlobalStyle('#bs-example-navbar-collapse-1 {background: linear-gradient(#333,#1a1a1a);}');
+    addGlobalStyle('.container-fluid {padding-left: 0 !important; padding-right:0 !important;}');
+    addGlobalStyle('.navbar-default .row {padding-left: 0 !important; padding-right:0 !important;background: linear-gradient(#1a1a1a, #333);}');
 }
     //Beta FriendsList
 //while(document.getElementsByClassName('buyer-seller') <= 1){
