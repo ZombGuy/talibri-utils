@@ -59,13 +59,13 @@ var displayChatHeading = false; // true or false
     addGlobalStyle('.main-chat-panel .panel-footer { height:80px !important; }');
    
     addGlobalStyle('.main-chat-panel .form-group { margin-bottom:0 !important; }');
-    addGlobalStyle('p.card-text {color: #f9b254;}');
+    addGlobalStyle('p.card-text {color: silver;}');
     addGlobalStyle('.admin { color: #FF0000 !important;}');
     addGlobalStyle('.card-text { border-bottom-style: solid; border-color: #49515e;}');
 
     //footer styles
     addGlobalStyle('.percentage-circle-fill {fill: '+highlightColor+'}');
-
+    
     //login styles
     addGlobalStyle('.jumbotron { background-color:rgba(0,0,0,0.75) !important; }');
     addGlobalStyle('.jumbotron .btn-success { background-color:'+highlightColor+' !important; border-color:black }');
@@ -73,10 +73,11 @@ var displayChatHeading = false; // true or false
 
     //dashboard styles
     addGlobalStyle('.jumbotron { display:none !important; }');
-    addGlobalStyle('p.text-center {color: #1ceac1;}');
+    addGlobalStyle('p.text-center {color: #6182b7;}');
     addGlobalStyle('h3.panel-title{color: #ccc; font-weight: bold;}');
     addGlobalStyle('.col-xs-6 {color: #adff56;}');
-
+    addGlobalStyle('.progress { background-color: lightgray;');
+    
     //inventory styles
     addGlobalStyle('.inventory-panel { max-height:none !important; overflow-y:visible !important; }');
     addGlobalStyle('.inventory-panel>.panel-body { max-height:none !important; overflow-y:visible !important;  }');
@@ -137,6 +138,7 @@ function enterDarkMode(){
     addGlobalStyle('.popover { background-color: #333 !important}');
     addGlobalStyle('.popover-title { background-color: #333 !important}');
     addGlobalStyle('#main-chat-text-area {background-color: #333 !important;color: #ccc !important}');
+    addGlobalStyle('.container-fluid:first-of-type {background-color: #1a1a1a;background-image: none !important}');
 }
     //Beta FriendsList
 //while(document.getElementsByClassName('buyer-seller') <= 1){
