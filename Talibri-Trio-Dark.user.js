@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Talibri Trio Dark
 // @namespace    http://tampermonkey.net/
-// @version      1.1.5
+// @version      1.1.6
 // @description  Revamp to make it easier on the eyes
 // @author       Dapper Zom
 // @match        https://www.talibri.com/*
@@ -142,6 +142,53 @@ function enterDarkMode(){
     addGlobalStyle('#bs-example-navbar-collapse-1 {background: linear-gradient(#333,#1a1a1a);}');
     addGlobalStyle('.container-fluid {padding-left: 0 !important; padding-right:0 !important;}');
     addGlobalStyle('.navbar-default .row {padding-left: 0 !important; padding-right:0 !important;background: linear-gradient(#1a1a1a, #333);}');
+    
+    //timestampremoval borrowed from Stretch's Talibri Chemo
+    addGlobalStyle('#messages .card-text br:first-of-type { display:none');
+    fixChatStamps();
+    $('#messages').bind('DOMNodeInserted', function() {
+        fixChatStamps();
+    });
+}
+$( document ).on('turbolinks:load', function() {
+    fixChatStamps();
+    $("#messages").scrollTop($("#messages")[0].scrollHeight);
+    $('#messages').bind('DOMNodeInserted', function() {
+        fixChatStamps();
+    });
+});
+var lastSender = '';
+var lastTime = '';
+
+function fixChatStamps(){
+    $('#messages .card-text').each(function(){
+        var old_message = $(this).html();
+        var thisSender = $(this).children(":first").html();
+        var new_message = old_message.split(' - ');
+        if(new_message.length>1){
+            var message_meta = new_message[0].split('(');
+            message_meta[1]=message_meta[1].replace(/\)/,'');
+            message_meta[1]=message_meta[1].replace(/\d\d\/\d\d /,'');
+            var thisTime = message_meta[1];
+            if(thisSender == lastSender) {
+                message_meta[0]='';
+            } else if (thisSender == '') {
+                message_meta[0]='';
+            } else {
+                lastSender = thisSender;
+            }
+
+            if(thisTime == lastTime) {
+                message_meta[1]='';
+            } else if (thisTime == '') {
+                message_meta[1]='';
+            } else {
+                lastTime = thisTime;
+            }
+            new_message[0] = message_meta[0]+'<span style="color:#999;font-size:0.8em; float:right;">'+message_meta[1]+'</span>';
+            $(this).html(new_message[0]+'<br>'+new_message[1]);
+        }
+    });
 }
     //Beta FriendsList
 //while(document.getElementsByClassName('buyer-seller') <= 1){
@@ -175,4 +222,3 @@ function enterDarkMode(){
  //       r = 0;
  //   }
 //}
-
