@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Talibri Trio Dark
 // @namespace    http://tampermonkey.net/
-// @version      1.1.6
+// @version      1.1.6.4
 // @description  Revamp to make it easier on the eyes
 // @author       Dapper Zom
 // @match        https://www.talibri.com/*
@@ -61,7 +61,6 @@ var displayChatHeading = false; // true or false
     addGlobalStyle('.main-chat-panel .form-group { margin-bottom:0 !important; }');
     addGlobalStyle('p.card-text {color: silver;}');
     addGlobalStyle('.admin { color: #FF0000 !important;}');
-    addGlobalStyle('.card-text { border-bottom-style: solid; border-color: #49515e;}');
 
     //footer styles
     addGlobalStyle('.percentage-circle-fill {fill: '+highlightColor+'}');
