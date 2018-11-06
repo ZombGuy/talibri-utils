@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Talibri Trio Dark
 // @namespace    http://tampermonkey.net/
-// @version      1.1.7
+// @version      1.1.9
 // @description  Revamp to make it easier on the eyes
 // @author       Dapper Zom
 // @match        https://www.talibri.com/*
@@ -11,11 +11,10 @@
 // ==/UserScript==
 
 // BEGIN EDITING
-var highlightColor  = '#0c0'; // hex color code or recognized color code
 
-var highlightColor  = '#99ccff'; // hex color code or recognized color code
-var darkMode = true;   // true or false
-var displayChatHeading = false; // true or false
+var highlightColor = '#99ccff'; // hex color code or recognized color code
+var darkMode = true;            // true or false
+var displayChatHeading = true; // true or false
 // END EDITING
 
 // and if you screwed something up, here are the default values:
@@ -48,16 +47,26 @@ var displayChatHeading = false; // true or false
     addGlobalStyle('.panel.panel-default {margin-bottom: 0 !important;}');
     addGlobalStyle('.col-sm-8 { color: #999 !important}');
     addGlobalStyle('.btn-success { background-color: #5bc0de; border-color: #46b8da;}');
+    addGlobalStyle('.btn-success:hover { background-color: #5bded0;}');
     addGlobalStyle('#notifications { overflow-y: auto !important;}');
+    addGlobalStyle('.col-md-2 {background-color: #1a1a1a; width: auto;}');
+    addGlobalStyle('#dice-roll.row {background: #1a1a1a !important;}');
+    addGlobalStyle('#skill_details {width: 600px;}');
+
 
     //modify chat panel
-    addGlobalStyle('body>.container-fluid:first-of-type>div.row>div.col-xs-3 { padding-left:0 !important; height:calc(100vh - 228px) !important; position: fixed !important; width:20%; }');
+    addGlobalStyle('body>.container-fluid:first-of-type>div.row>div.col-xs-3 { padding-left:0 !important; height:calc(100vh - 228px) !important; position: fixed !important; width:20%; margin-top: 2px; }');
     addGlobalStyle('.main-chat-panel.panel-heading { height:37px !important; }');
-    addGlobalStyle('#messages { height:calc(100vh - 228px) !important; }');
+    addGlobalStyle('#messages { height:calc(87vh - 228px) !important; }');
     addGlobalStyle('.main-page { margin-left:20% !important; width:80% !important; margin-right:0 !important; padding-right:0 !important; }');
     addGlobalStyle('.main-chat-panel .form-group>br,.main-chat-panel .form-group>.text-muted {display:none; }');
     addGlobalStyle('.main-chat-panel .panel-footer { height:80px !important; }');
-   
+    addGlobalStyle('.chat-tab {background-color: #333; border: 1px solid #666; border-radius: 0px 0px 3px 3px !important; }');
+    addGlobalStyle('.nav-pills>li.active>a {background:#5bc0de; color:#fff !important;};');
+    addGlobalStyle('.nav>li>a:hover {background: #77c5dc; color:#fff !important;};')
+    addGlobalStyle('.nav>li>a {margin-bottom: 2px;};');
+    addGlobalStyle('.panel-footer {border-bottom-right-radius: 0px !important; border-bottom-left-radius: 0px !important;};');
+
     addGlobalStyle('.main-chat-panel .form-group { margin-bottom:0 !important; }');
     addGlobalStyle('p.card-text {color: silver;}');
     addGlobalStyle('.admin { color: #FF0000 !important;}');
@@ -161,31 +170,28 @@ var lastTime = '';
 
 function fixChatStamps(){
     $('#messages .card-text').each(function(){
-        var old_message = $(this).html();
-        var thisSender = $(this).children(":first").html();
-        var new_message = old_message.split(' - ');
-        if(new_message.length>1){
-            var message_meta = new_message[0].split('(');
-            message_meta[1]=message_meta[1].replace(/\)/,'');
-            message_meta[1]=message_meta[1].replace(/\d\d\/\d\d /,'');
-            var thisTime = message_meta[1];
+        var dt = $(this).children(".chat-date").html();
+        var thisSender = $(this).children("span:first").children("a").html();
+        if(dt.match(/\d\d\/\d\d \d\d:\d\d/)) {
+            dt=dt.replace(/\d\d\/\d\d /,'');
+            var thisTime = dt;
             if(thisSender == lastSender) {
-                message_meta[0]='';
+                $(this).children("span:first").children("a").html("");
             } else if (thisSender == '') {
-                message_meta[0]='';
+                $(this).children("span:first").children("a").html("");
             } else {
+                $(this).children("span:first").children("a").html(thisSender);
                 lastSender = thisSender;
             }
 
             if(thisTime == lastTime) {
-                message_meta[1]='';
+                $(this).children(".chat-date").html("");
             } else if (thisTime == '') {
-                message_meta[1]='';
+                $(this).children(".chat-date").html("");
             } else {
+                $(this).children(".chat-date").html(thisTime);
                 lastTime = thisTime;
             }
-            new_message[0] = message_meta[0]+'<span style="color:#999;font-size:0.8em; float:right;">'+message_meta[1]+'</span>';
-            $(this).html(new_message[0]+'<br>'+new_message[1]);
         }
     });
 }
